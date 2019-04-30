@@ -1,0 +1,19 @@
+# Replace strings within the coordinates list in .txt file 
+# to get the clean coordinates table
+# 2019/04/30
+
+# Read input file, create output file - in "w" = writing mode
+input = open( "C:/Data/coordinates.txt") 
+output = open( "C:/Data/coordinates_clean.txt", "w") 
+
+# Loop through each line to remove the string values
+# (remove = replace with no value)
+for line in input: 
+    str = line.replace( "ID: ", "") 
+    str = str.replace( ", Latitude:", "") 
+    str = str.replace( ", Longitude:", "") 
+    output.write(str)
+    
+# Close input and output files to save the results
+input.close() 
+output.close()
