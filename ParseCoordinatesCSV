@@ -1,0 +1,42 @@
+
+# PennState: Parse the GPS track coordinates
+# 2019/04/29
+
+# Import the file csv file
+# Read the header line
+# Loop through the header line to find the index positions of the "lat", "long"
+# Read rest of the lines line by line
+# Find the values in the list corresponding to lat and long coordinates and write them to a new list
+
+
+# Import csv module to work with
+import csv
+
+# Open gps track data
+# no need the data to be in .csv format to work with csv package
+gpsTrack = open("C:\\Users\\mpotterf\\Dropbox\\PennState\\L4\\gps_track.txt", "r") # "r" - read only
+
+# Once file is open, we can create a csv reader object
+csvReader = csv.reader(gpsTrack)  # this object is like a cursor
+
+# Read first the header line, as it is different from other lines
+header = csvReader.next()
+
+# Get the indexing of the "lat" "long" instead of hardcode index values
+latIndex = header.index("lat")
+lonIndex = header.index("long")
+
+# Process the rest of lines using a for loop
+# Make an empty list
+coordList = []
+
+# Loop through each row to get coordinates
+# list and append the coordinates to final list
+for row in csvReader:
+    lat = row[latIndex]
+    lon = row[latIndex]
+    coordList.append([lat,lon])
+
+print (coordList)
+
+
